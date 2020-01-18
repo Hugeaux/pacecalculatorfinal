@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <title>Pace Calculator</title>
+  <meta name="description" content="Pace Calculator">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    
+    <div class="container">
+    <h1>Pace calculator</h1>
+    <form name="formcalc">
+        <div class="form-group">
+          <label>You're running</label>
+          <input type="text" class="form-control" name="txtnum1" placeholder="42">
+          <select class="custom-select" id="distance">
+            <option value="kilometer">kilometers</option>
+            <option value="mile">miles</option>
+        </select> 
+        </div>
+        <div class="form-group">
+          <label>You want to finish in</label>
+          <input type="text" class="form-control" name="txtnum2" placeholder="4">
+          <select class="custom-select" id="time">
+            <option value="minutes">minutes</option>
+            <option value="hours">hours</option>
+        </select>
+        </div>
+      </form>
+    
+    <button class="btn btn-primary" onclick="times();distance();">Calculate</button>
+    <br>
+    <p>You'll have to run <strong id="minutes">...</strong> minutes and <strong id="seconds">...</strong> seconds per <strong id="metric">...</strong>
+    </div>
+  <script>
+    function times() {
+        var time = document.getElementById("time").value;
+            if (time == "hours") {
+                hours();
+            } else if (time == "minutes") {
+                minutes();
+            }
+        return time;
+    }
+
+    function minutes() {
+        var num1=Number(document.formcalc.txtnum1.value);
+        var num2=Number(document.formcalc.txtnum2.value);
+        var res=num2/num1;
+        var n = res.toString();
+        var minutes = parseInt(n);
+        var seconds = (res - minutes)*60;
+        var rounded = Math.round( seconds * 10 ) / 10;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = rounded;
+    }
+
+    function hours() {
+        var num1=Number(document.formcalc.txtnum1.value);
+        var num2=Number(document.formcalc.txtnum2.value);
+        var res=num2/num1;
+        var res60 = res * 60
+        var n = res60.toString();
+        var minutes = parseInt(n);
+        var seconds = (res60 - minutes)*60;
+        var rounded = Math.round( seconds * 10 ) / 10;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = rounded;
+    }
+
+    function distance()  {
+        var x = document.getElementById("distance").value;
+        document.getElementById("metric").innerHTML = x;
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
