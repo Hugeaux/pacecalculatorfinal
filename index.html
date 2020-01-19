@@ -15,11 +15,12 @@
 <body>
     
     <div class="container">
+    <div>
     <h1>Pace calculator</h1>
     <form name="formcalc">
         <div class="form-group">
           <label>You're running</label>
-          <input type="text" class="form-control" name="txtnum1" placeholder="42">
+          <input type="text" class="form-control" name="txtnum1" placeholder="how far?">
           <select class="custom-select" id="distance">
             <option value="kilometer">kilometers</option>
             <option value="mile">miles</option>
@@ -27,7 +28,7 @@
         </div>
         <div class="form-group">
           <label>You want to finish in</label>
-          <input type="text" class="form-control" name="txtnum2" placeholder="4">
+          <input type="text" class="form-control" name="txtnum2" placeholder="how long?">
           <select class="custom-select" id="time">
             <option value="minutes">minutes</option>
             <option value="hours">hours</option>
@@ -37,7 +38,10 @@
     
     <button class="btn btn-primary" onclick="times();distance();">Calculate</button>
     <br>
+    </div>
+    <div class="result">
     <p>You'll have to run <strong id="minutes">...</strong> minutes and <strong id="seconds">...</strong> seconds per <strong id="metric">...</strong>
+    </div>
     </div>
   <script>
     function times() {
